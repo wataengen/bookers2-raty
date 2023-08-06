@@ -10,6 +10,16 @@ class BooksController < ApplicationController
   def index
     @books = Book.all
     @book = Book.new
+
+    if params[:latest]
+      @books = Book.latest
+    elsif params[:old]
+      @books = Book.old
+    elsif params[:star_count]
+      @books = Book.star_count
+    else
+      @books = Book.all
+    end
   end
 
   def create
@@ -38,6 +48,7 @@ class BooksController < ApplicationController
     @book.destroy
     redirect_to books_path
   end
+
 
   private
 

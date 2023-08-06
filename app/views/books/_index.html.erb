@@ -1,5 +1,11 @@
 <table class='table table-hover table-inverse'>
+
   <thead>
+    <tr>
+      <%= link_to '新しい順', books_path(latest: "true") %>
+      |<%= link_to '古い順', books_path(old: "true") %>
+      |<%= link_to '評価の高い順', books_path(star_count: "true") %>
+    </tr>
     <tr>
       <th></th>
       <th>Title</th>
