@@ -28,11 +28,12 @@
         </td>
         <td><%= render "books/static_rate", book: book %></td>
         <td>
-          <% tag_list_all.each do |list|%>
+          <% book.book_tags.each do |tag|%>
             <i class="fa-sharp fa-solid fa-tag"></i>
-            <%=link_to list.name,search_tag_path(book_tag_id: list.id) %>
-            <%="(#{list.books.count})" %>
+            <%=link_to tag.name,search_tag_path(book_tag_id: tag.id) %>
           <% end %>
+
+
         </td>
         <td>コメント数: <%= book.book_comments.count %></td>
       </tr>

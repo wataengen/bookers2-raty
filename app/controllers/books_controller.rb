@@ -5,14 +5,15 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @book_comment = BookComment.new
-    @tag_list = @book.book_tags.pluck(:name).join(',')
+    @newbook =Book.new
+    @tag_list = @newbook.book_tags.pluck(:name).join(',')
     @post_book_tags = @book.book_tags
   end
 
   def index
     @books = Book.all
     @book = Book.new
-    @tag_list_all = BookTag.all
+
     @tag_list = @book.book_tags.pluck(:name).join(',')
 
     if params[:latest]

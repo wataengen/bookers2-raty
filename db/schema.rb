@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 2023_08_07_022114) do
     t.integer "book_tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index "\"post_book_id\", \"book_tag_id\"", name: "index_post_book_tags_on_post_book_id_and_book_tag_id", unique: true
+    t.index ["book_id", "book_tag_id"], name: "index_post_book_tags_on_book_id_and_book_tag_id", unique: true
     t.index ["book_id"], name: "index_post_book_tags_on_book_id"
     t.index ["book_tag_id"], name: "index_post_book_tags_on_book_tag_id"
   end
