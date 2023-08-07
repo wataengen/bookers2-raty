@@ -6,11 +6,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
+    @tag_list_all = BookTag.all
+    @tag_list = @book.book_tags.pluck(:name).join(',')
   end
 
   def index
     @users = User.all
     @book = Book.new
+    @tag_list = @book.book_tags.pluck(:name).join(',')
   end
 
   def edit

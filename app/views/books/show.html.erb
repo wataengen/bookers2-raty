@@ -4,7 +4,7 @@
       <h2>User info</h2>
       <%= render 'users/info', user: @book.user %>
       <h2 class="mt-3">New book</h2>
-      <%= render 'form', book: Book.new %>
+      <%= render 'form', {book: Book.new, tag_list: @tag_list} %>
     </div>
     <div class='col-md-8 offset-md-1'>
   		<h2>Book detail</h2>
@@ -24,6 +24,12 @@
 
           <td>コメント数: <%= @book.book_comments.count %></td>
           <td><%= render "static_rate", book: @book %></td>
+          <td>
+            <% @post_book_tags.each do |tag| %>
+              <i class="fa-sharp fa-solid fa-tag"></i>
+              <%= link_to tag.name,search_tag_path(book_tag_id: tag.id) %>
+            <% end %>
+          </td>
           <% if @book.user == current_user %>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %></td>
             <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}"%></td>
