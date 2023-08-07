@@ -17,6 +17,6 @@ Rails.application.routes.draw do
     get "send/mail" => "groups#send_mail"
   end
 
-  get "search_tag" => "post_workouts#search_tag"
+  get "search_tag" => "books#search_tag"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
